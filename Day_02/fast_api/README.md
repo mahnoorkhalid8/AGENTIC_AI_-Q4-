@@ -3,7 +3,9 @@ This is a simple FastAPI project that returns a greeting message using a GET end
 
 # 📁 Project Setup Steps
 # 1. 📦 Create and Initialize the Project Folder
+bash
 copy
+edit
 uv init fast_api
 
 This will create a project folder with FastAPI standard layout.
