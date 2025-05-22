@@ -4,21 +4,6 @@ The Agent class is defined as a dataclass because it primarily holds data such a
 Automatically generates methods like __init__(), __repr__(), and __eq__().
 Makes the code cleaner and avoids writing repetitive boilerplate code.
 
-#### Example:
-Imagine you’re storing recipe details in a class:
-
-from dataclasses import dataclass
-
-@dataclass
-class Recipe:
-    name: str
-    ingredients: list
-    
-Now you can just create an instance like:
-
-cake = Recipe("Chocolate Cake", ["Flour", "Sugar", "Cocoa"])
-No need to define an __init__() manually.
-
 ## 2a. Why is the system prompt stored in the Agent class as instructions and made callable?
 The system prompt (instructions) in the Agent class is often the AI’s background context — like telling the assistant "You are a helpful bot."
 By making the Agent class callable (using the __call__ method), it becomes easier to use the agent like a function:
@@ -51,17 +36,6 @@ You can think of it like a chef (Runner) who knows how to use the recipe (Agent)
 Generics in Python (using TypeVar) allow you to write flexible and reusable code by not locking you into one specific data type.
 
 TContext is a placeholder type that lets you customize what type of context your agent might expect (e.g., user session, settings, history). You define it once and reuse it wherever needed, while still getting type hints and checks from tools like mypy.
-
-Example:
-
-from typing import TypeVar, Generic
-
-TContext = TypeVar("TContext")
-
-class MyAgent(Generic[TContext]):
-    def __init__(self, context: TContext):
-        self.context = context
-This allows different developers to pass any context (like a dictionary, a class, or config) and still maintain type safety.
 
 Real-life analogy:
 It’s like writing a recipe that works for any ingredients you give (instead of forcing chocolate every time). You can reuse the recipe for banana, vanilla, etc., while still knowing what to expect.
